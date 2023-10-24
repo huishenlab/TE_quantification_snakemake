@@ -25,13 +25,13 @@ This is a pipeline for the quantification of Transposable Elements in the single
 
 1) Aligned bam files are used as inputs to featureCounts with parameters `-F SAF -O -B -p --fracOverlap 0.1 -M -s 0 --fraction` specified in the config.yaml file. These can also be altered as per the requirement.
 2) feature counts files for all the cells are then used to generate a combined raw count, counts per million, raw count for only intergenic and intronic TEs and counts per millions for only intergenic and intronic TEs matrices.
-3) If filtering requirement is set to be True in the config.yaml file then a quick Scuttle filtering is performed to filter out low quality cells and generate filtered count matrices.
+3) If filtering requirement is set to be True in the `config.yaml` file then a quick Scuttle filtering is performed to filter out low quality cells and generate filtered count matrices.
 4) Counts per millions for only intergenic and intronic TEs matrix is used for the log enrichment calculation of TE's
 6) Enrichment score is calculated as per the folloing formula.
 
 $$ enrichment\ score = {{{Number\ of\ TE\ subfamilies\ >\ 1cpm} \over {Number\ of\ TEs\ >\ 1cpm}} \over {{Number\ of\ TE\ subfamilies} \over {Number\ of\ TEs}}} $$
 
-7) If the log enrichment heatmap plot requirement is set to be True in the config.yaml file then a heatmap plot, generated using ggplot2, is also saved as a pdf file.
+7) If the log enrichment heatmap plot requirement is set to be True in the `config.yaml` file then a heatmap plot, generated using ggplot2, is also saved as a pdf file.
    
 # Using the workflow
 
