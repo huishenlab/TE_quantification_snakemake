@@ -1,0 +1,47 @@
+resource_specs:
+    # number of threads to be used with featureCounts
+    featureCounts_threads: 26
+    # nuber of threads to be used with fread in create_matrix r script
+    fread_threads: 6
+    # Low amount of memory to request
+    small_memory_gb: 20
+    # Middle amount of memory to request
+    intermediate_memory_gb: 80
+    # High amount of memory to request
+    max_memory_gb: 245
+
+# Time to request when running on a cluster
+# Give in 'D-HH:MM:SS', must be given as a string for pipeline to work
+runtime:
+    short: '0-01:00:00'
+    medium: '1-00:00:00'
+    long: '2-00:00:00'
+
+## directory where the input bam files are stored    
+aligned_bam_dir: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/K562_data/STORM/aligned_files
+
+## directory and metadata data of the samples
+samples:
+    samples_tsv: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/TE_quantification_snakemake_workflow/config/samples.tsv
+    sample_name: "K562"
+    single_cell: "TRUE"
+    qc: "TRUE" ## specify if qc is to be performed
+
+## output directory where all sub folders and output files will be generated
+output_dir: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/TE_quantification_snakemake_workflow/test
+
+featurecounts:
+    params: -F SAF -O -B -p --fracOverlap 0.1 -M -s 0 --fraction -T ## parameters to be used with featureCounts. You can make changes to these or specify your own set
+    annotation_saf: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/TE_quantification_snakemake_workflow/config/hg38_pc_te_chrM.saf ## annotation file in saf format
+
+create_matrix: 
+    create_matrix_script: scripts/create_matrix_file.r 
+    intronic_intergenic_tes: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/TE_quantification_snakemake_workflow/config/intergenic_intronic_tes.txt
+
+log_enrichment: 
+    calculate: True
+    log_enrich_script: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/TE_quantification_snakemake_workflow/scripts/log_enrichment.r
+    plot: True
+
+
+
