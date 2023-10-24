@@ -18,29 +18,29 @@ runtime:
     long: '2-00:00:00'
 
 ## directory where the input bam files are stored    
-aligned_bam_dir: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/K562_data/STORM/aligned_files
+aligned_bam_dir: /path/to/aligned_files
 
 ## directory and metadata data of the samples
 samples:
-    samples_tsv: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/TE_quantification_snakemake_workflow/config/samples.tsv
+    samples_tsv: config/samples.tsv
     sample_name: "K562"
     single_cell: "TRUE"
     qc: "TRUE" ## specify if qc is to be performed
 
 ## output directory where all sub folders and output files will be generated
-output_dir: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/TE_quantification_snakemake_workflow/test
+output_dir: /path/to/output_dir
 
 featurecounts:
     params: -F SAF -O -B -p --fracOverlap 0.1 -M -s 0 --fraction -T ## parameters to be used with featureCounts. You can make changes to these or specify your own set
-    annotation_saf: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/TE_quantification_snakemake_workflow/config/hg38_pc_te_chrM.saf ## annotation file in saf format
+    annotation_saf: config/hg38_pc_te_chrM.saf ## annotation file in saf format
 
 create_matrix: 
     create_matrix_script: scripts/create_matrix_file.r 
-    intronic_intergenic_tes: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/TE_quantification_snakemake_workflow/config/intergenic_intronic_tes.txt
+    intronic_intergenic_tes: config/intergenic_intronic_tes.txt
 
 log_enrichment: 
     calculate: True
-    log_enrich_script: /varidata/research/projects/shen/projects/2022_08_01_Josh_Ben_Ayush_STORM_TE_project/TE_quantification_snakemake_workflow/scripts/log_enrichment.r
+    log_enrich_script: scripts/log_enrichment.r
     plot: True
 
 
