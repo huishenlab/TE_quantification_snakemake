@@ -35,7 +35,7 @@ $$ enrichment\ score = {{{Number\ of\ TE\ subfamilies\ >\ 1cpm} \over {Number\ o
    
 ## Using the workflow
 
-1) Cone the repo (https://github.com/AyushSemwal/TE_quantification_snakemake) using:
+1) Clone the repo (https://github.com/AyushSemwal/TE_quantification_snakemake) using:
    *  HTTPS: `https://github.com/AyushSemwal/TE_quantification_snakemake.git`
    *  SSH: `git@github.com:AyushSemwal/TE_quantification_snakemake.git`
 2) Unzip `hg38_pc_te_chrM.saf.tar.gz` and `intergenic_intronic_tes.txt.tar.gz` in the config folder.
